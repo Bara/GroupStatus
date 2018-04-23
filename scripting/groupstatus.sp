@@ -34,7 +34,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 public void OnPluginStart()
 {
     LoadTranslations("groupstatus.phrases");
-    
+
     RegConsoleCmd("sm_group", Command_Group);
     RegConsoleCmd("sm_join", Command_Group);
     RegConsoleCmd("sm_refresh", Command_Refresh);
@@ -43,6 +43,8 @@ public void OnPluginStart()
     g_cGroupURL = CreateConVar("groupstatus_url", "", "Custom url name of the group");
 
     AutoExecConfig();
+
+    CreateTimer(30.0, Timer_CheckStatus, _, TIMER_FLAG_NO_MAPCHANGE | TIMER_REPEAT);
 }
 
 public void OnClientPostAdminCheck(int client)
@@ -53,6 +55,14 @@ public void OnClientPostAdminCheck(int client)
 public int Native_InGroup(Handle plugin, int numParams)
 {
     return g_bStatus[GetNativeCell(1)];
+}
+
+public Action Timer_CheckStatus(Handle timer)
+{
+    LoopClients(client)
+    {
+        SteamWorks_GetUserGroupStatus(client, g_cGroupID.IntValue);
+    }
 }
 
 public Action Command_Group(int client, int args)
@@ -109,12 +119,12 @@ public int SteamWorks_OnClientGroupStatus(int authid, int groupid, bool isMember
         return;
     }
 
-    if (groupid == g_cGroupID.IntValue && isMember)
+    if (groupid == g_cGroupID.IntValue && (isMember || isOfficer) && !g_bStatus[client])
     {
         g_bStatus[client] = true;
         CPrintToChat(client, "%T", "In Group: Yes", client);
     }
-    else
+    else if (g_bStatus[client] && !isMember && !isOfficer)
     {
         g_bStatus[client] = false;
         CPrintToChat(client, "%T", "In Group: No", client);
