@@ -3,6 +3,7 @@
 #include <sourcemod>
 #include <SteamWorks>
 #include <webfix>
+#include <multicolors>
 
 #pragma newdecls required
 
@@ -32,6 +33,8 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart()
 {
+    LoadTranslations("groupstatus.phrases");
+    
     RegConsoleCmd("sm_group", Command_Group);
     RegConsoleCmd("sm_join", Command_Group);
     RegConsoleCmd("sm_refresh", Command_Refresh);
@@ -109,12 +112,12 @@ public int SteamWorks_OnClientGroupStatus(int authid, int groupid, bool isMember
     if (groupid == g_cGroupID.IntValue && isMember)
     {
         g_bStatus[client] = true;
-        PrintToChat(client, "You are in our steam group!");
+        CPrintToChat(client, "%T", "In Group: Yes", client);
     }
     else
     {
         g_bStatus[client] = false;
-        PrintToChat(client, "You aren't in our steam group!");
+        CPrintToChat(client, "%T", "In Group: No", client);
     }
 }
 

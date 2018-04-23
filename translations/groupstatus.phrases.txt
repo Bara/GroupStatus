@@ -1,0 +1,15 @@
+"Phrases"
+{
+    "In Group: Yes"
+    {
+        "#format"   "{1:d}"
+        "en"        "{default}You are in our steam group!"
+        "de"        "{default}Sie sind in unserer Steam Gruppe!"
+    }
+
+    "In Group: No"
+    {
+        "en"        "{default}You aren't in our steam group! Type {green}!join {default}to change it, but you to finally update your status type {green}!refresh"
+        "de"        "{default}Du bist in unserer Steam Gruppe! Gib {green}!join {default}ein um dies zu ändern, aber um den Status umgehen zu ändern gib noch {green}!refresh {default}ein"
+    }
+}
