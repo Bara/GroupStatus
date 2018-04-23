@@ -15,11 +15,11 @@ ConVar g_cGroupURL = null;
 
 public Plugin myinfo =
 {
-	name = "[Outbreak] Group Status",
-	author = "Bara",
-	description = "",
-	version = "1.0.0",
-	url = "outbreak.community"
+    name = "[Outbreak] Group Status",
+    author = "Bara",
+    description = "",
+    version = "1.0.0",
+    url = "outbreak.community"
 };
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
@@ -86,15 +86,15 @@ bool UpdateGroupStatus(int client)
 
 stock bool IsClientValid(int client, bool bots = false)
 {
-	if (client > 0 && client <= MaxClients)
-	{
-		if(IsClientInGame(client) && (bots || !IsFakeClient(client)) && !IsClientSourceTV(client))
-		{
-			return true;
-		}
-	}
-	
-	return false;
+    if (client > 0 && client <= MaxClients)
+    {
+        if(IsClientInGame(client) && (bots || !IsFakeClient(client)) && !IsClientSourceTV(client))
+        {
+            return true;
+        }
+    }
+    
+    return false;
 }
 
 public int SteamWorks_OnClientGroupStatus(int authid, int groupid, bool isMember, bool isOfficer)
@@ -120,9 +120,9 @@ public int SteamWorks_OnClientGroupStatus(int authid, int groupid, bool isMember
 
 int GetUserAuthID(int authid)
 {
-	for (int i = 1; i <= MaxClients; i++)
-	{
-		if (IsClientValid(i))
+    for (int i = 1; i <= MaxClients; i++)
+    {
+        if (IsClientValid(i))
         {
             char[] charauth = new char[64];
             char[] authchar = new char[64];
@@ -133,7 +133,7 @@ int GetUserAuthID(int authid)
                 return i;
             }
         }
-	}
+    }
 
-	return -1;
+    return -1;
 }
