@@ -37,7 +37,7 @@ public void OnPluginStart()
     RegConsoleCmd("sm_refresh", Command_Refresh);
 
     g_cGroupID = CreateConVar("groupstatus_id", "", "ID of the group");
-    g_cGroupURL = CreateConVar("groupstatus_url", "", "Custom url naem of the group");
+    g_cGroupURL = CreateConVar("groupstatus_url", "", "Custom url name of the group");
 
     AutoExecConfig();
 }
