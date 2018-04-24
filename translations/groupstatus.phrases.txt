@@ -10,6 +10,6 @@
     "In Group: No"
     {
         "en"        "{default}You aren't in our steam group! Type {green}!join {default}to change it, but you to finally update your status type {green}!refresh"
-        "de"        "{default}Du bist in unserer Steam Gruppe! Gib {green}!join {default}ein um dies zu ändern, aber um den Status umgehen zu ändern gib noch {green}!refresh {default}ein"
+        "de"        "{default}Du bist nicht in unserer Steam Gruppe! Gib {green}!join {default}ein um dies zu ändern, aber um den Status umgehen zu ändern gib noch {green}!refresh {default}ein"
     }
 }
