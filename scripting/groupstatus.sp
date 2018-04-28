@@ -4,6 +4,7 @@
 #include <SteamWorks>
 #include <webfix>
 #include <multicolors>
+#include <autoexecconfig>
 
 #pragma newdecls required
 
@@ -39,8 +40,14 @@ public void OnPluginStart()
     RegConsoleCmd("sm_join", Command_Group);
     RegConsoleCmd("sm_refresh", Command_Refresh);
 
-    g_cGroupID = CreateConVar("groupstatus_id", "", "ID of the group");
-    g_cGroupURL = CreateConVar("groupstatus_url", "", "Custom url name of the group");
+
+    AutoExecConfig_SetCreateDirectory(true);
+    AutoExecConfig_SetCreateFile(true);
+    AutoExecConfig_SetFile("plugin.groupstatus");
+    g_cGroupID = AutoExecConfig_CreateConVar("groupstatus_id", "", "ID of the group");
+    g_cGroupURL = AutoExecConfig_CreateConVar("groupstatus_url", "", "Custom url name of the group");
+    AutoExecConfig_ExecuteFile();
+    AutoExecConfig_CleanFile();
 
     AutoExecConfig();
 
