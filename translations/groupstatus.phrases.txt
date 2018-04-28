@@ -2,7 +2,6 @@
 {
     "In Group: Yes"
     {
-        "#format"   "{1:d}"
         "en"        "{default}You are in our steam group!"
         "de"        "{default}Sie sind in unserer Steam Gruppe!"
     }
